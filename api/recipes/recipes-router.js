@@ -1,7 +1,12 @@
 const router = require("express").Router();
+const { getRecipeById } = require("./recipes-model");
 
-router.use("*", (req, res) => {
-  res.json({ api: "up" });
+router.get("/:recipe_id", (req, res, next) => {
+  getRecipeById(req.params.recipe_id)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch(next);
 });
 
 //eslint-disable-next-line
