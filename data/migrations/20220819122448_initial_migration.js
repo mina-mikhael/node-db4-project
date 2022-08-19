@@ -3,6 +3,7 @@ exports.up = async function (knex) {
     .createTable("recipes", (tbl) => {
       tbl.increments("recipe_id");
       tbl.string("recipe_name", 200).notNullable().unique();
+      tbl.string("created_at", 200).notNullable();
     })
     .createTable("ingredients", (tbl) => {
       tbl.increments("ingredient_id");
